@@ -74,6 +74,9 @@ jobs:
             fi
           done
           
+      - name: Remove blockmap files
+        run: rm ./*/*.blockmap
+          
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
