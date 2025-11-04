@@ -12,17 +12,17 @@ if (unsignedMode) {
 
   // Make it abundantly clear in the output that the builds aren't signed, so
   // we don't accidentally distribute them. Different app & file names throughout.
-  config.productName = packageJson.name + ' - dev build';
-  config.extraMetadata.name += '-dev';
-  config.extraMetadata.productName += '-dev';
+  config.productName = 'HTTP Toolkit Unofficial';
+  config.extraMetadata.name = 'HTTP-Toolkit-Unofficial';
+  config.extraMetadata.productName = 'HTTP-Toolkit-Unofficial';
 
-  config.artifactName = config.artifactName.replace('${ext}', 'dev.${ext}');
-  for (let field in config) {
-    if (config[field]?.artifactName) {
-      config[field].artifactName =
-        config[field].artifactName.replace('${ext}', 'dev.${ext}');
-    }
-  }
+  // config.artifactName = config.artifactName.replace('${ext}', 'dev.${ext}');
+  // for (let field in config) {
+  //   if (config[field]?.artifactName) {
+  //     config[field].artifactName =
+  //       config[field].artifactName.replace('${ext}', 'dev.${ext}');
+  //   }
+  // }
 
   config.mac.forceCodeSigning = false;
   config.mac.notarize = false;

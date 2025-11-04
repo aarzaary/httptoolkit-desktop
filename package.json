@@ -29,8 +29,8 @@
     "extends": null,
     "productName": "HTTP Toolkit",
     "extraMetadata": {
-      "name": "httptoolkit",
-      "productName": "httptoolkit",
+      "name": "HTTP Toolkit",
+      "productName": "HTTP Toolkit",
       "author": "Toolshed Labs SLU"
     },
     "files": [
