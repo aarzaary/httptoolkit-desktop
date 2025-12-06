@@ -44,8 +44,6 @@ export const getMenu = (
                 { type: 'separator' },
                 // Reload shortcuts disabled because they're rarely used and very easy to hit accidentally when debugging
                 // traffic in a web browser at the same time
-                { role: 'reload', accelerator: '' },
-                { role: 'forceReload', accelerator: '' },
                 { role: 'toggleDevTools' }
             ]
         },
