@@ -1,31 +1,34 @@
 import * as path from 'path';
 import * as os from 'os';
-import { promises as fs, createWriteStream } from 'fs'
+import { promises as fs, createWriteStream, readFileSync } from 'fs'
 import { promisify } from 'util';
 
-import * as _ from 'lodash';
+import _ from 'lodash';
 import * as semver from 'semver';
 import fetch from 'node-fetch';
-import * as targz from 'targz';
+import targz from 'targz';
 import { execSync } from 'child_process';
+
+import packageJson from './package.json' with { type: 'json' };
 
 const extractTarGz = promisify(targz.decompress);
 
 const canAccess = (path: string) => fs.access(path).then(() => true).catch(() => false);
 const deleteDir = (p: string) => fs.rm(p, { recursive: true, force: true });
 
-const packageJson = require('./package.json');
 const requiredServerVersion = 'v' + packageJson.config['httptoolkit-server-version'];
 
 // For local testing of the desktop app, we need to pull the latest server and unpack it.
 // This real prod server will then be used with the real prod web UI, but this local desktop app.
 async function setUpLocalEnv() {
     const serverExists = await canAccess('./httptoolkit-server/package.json');
-    const serverVersion = serverExists ? require('./httptoolkit-server/package.json').version : null;
+    const serverVersion = serverExists
+        ? JSON.parse(readFileSync('./httptoolkit-server/package.json').toString()).version
+        : null;
 
     if (!serverVersion || semver.neq(serverVersion, requiredServerVersion)) {
         if (serverExists) await deleteDir('./httptoolkit-server');
-        await insertServer(__dirname, os.platform(), os.arch());
+        await insertServer(import.meta.dirname, os.platform(), os.arch());
         console.log('Server setup completed.');
     } else {
         console.log('Correct server already downloaded.');
