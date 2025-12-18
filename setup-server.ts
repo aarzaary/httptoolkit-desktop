@@ -74,7 +74,7 @@ async function insertServer(
 
     const releases = await response.json();
 
-    const release = _.find(releases, { tag_name: requiredServerVersion });
+    const release = _.find(releases, { tag_name: 'main' });
 
     if (!release || !release.assets) {
         console.error(JSON.stringify(release, null, 2));
