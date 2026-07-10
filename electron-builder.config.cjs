@@ -15,17 +15,6 @@ if (unsignedMode) {
   config.productName = 'HTTP Toolkit Unofficial';
   config.extraMetadata.name = 'HTTP-Toolkit-Unofficial';
   config.extraMetadata.productName = 'HTTP-Toolkit-Unofficial';
-<<<<<<< HEAD:electron-builder.config.js
-
-  // config.artifactName = config.artifactName.replace('${ext}', 'dev.${ext}');
-  // for (let field in config) {
-  //   if (config[field]?.artifactName) {
-  //     config[field].artifactName =
-  //       config[field].artifactName.replace('${ext}', 'dev.${ext}');
-  //   }
-  // }
-=======
->>>>>>> origin/main:electron-builder.config.cjs
 
   config.mac.forceCodeSigning = false;
   config.mac.notarize = false;
