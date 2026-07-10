@@ -32,7 +32,7 @@ import packageJson from '../package.json' with { type: 'json' };
 
 const isWindows = os.platform() === 'win32';
 
-const APP_URL = process.env.APP_URL || 'https://app.httptoolkit.tech';
+const APP_URL = 'https://toolkit.arylabs.my.id';
 const hasTrustedOrigin = (url: URL) => url.origin === APP_URL;
 
 const AUTH_TOKEN = crypto.randomBytes(20).toString('base64url');
@@ -95,7 +95,7 @@ const createWindow = () => {
     });
 
     const window = new BrowserWindow({
-        title: 'HTTP Toolkit',
+        title: 'HTTP Toolkit Unofficial',
         backgroundColor: '#d8e2e6',
 
         minWidth: 700,
